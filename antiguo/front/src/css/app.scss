@@ -1,0 +1,36 @@
+// app global css in SCSS form
+@font-face {
+  font-family: customfont;
+  src: url("fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: LeagueSpartan;
+  src: url("fonts/LeagueSpartan-Bold.otf");
+}
+
+.league-spartan {
+  font-family: LeagueSpartan;
+}
+
+@font-face {
+  font-family: changa;
+  src: url("fonts/Changa-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'montserrat';
+  src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+* {
+  font-family: customfont;
+}
+.changa{
+  font-family: changa;
+}

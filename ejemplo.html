@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>4ta Jornada Nacional de Neurología · 2do Simposio Internacional — Oruro, Bolivia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy-900:#06182f;
+    --navy-800:#0a2745;
+    --navy-700:#0d345c;
+    --blue-600:#0f5fb0;
+    --blue-500:#1a73d4;
+    --blue-400:#3a90e6;
+    --cyan:#5cc6f5;
+    --accent:oklch(0.74 0.16 48);      /* coral cálido — guiño al cerebro de colores */
+    --accent-soft:oklch(0.74 0.16 48 / 0.12);
+    --ink:#11233a;
+    --ink-soft:#43586f;
+    --line:#e3e9f1;
+    --bg:#f5f8fc;
+    --bg-tint:#eef4fb;
+    --white:#ffffff;
+    --radius:20px;
+    --radius-sm:13px;
+    --shadow-sm:0 1px 2px rgba(13,52,92,.06), 0 4px 16px rgba(13,52,92,.05);
+    --shadow-md:0 10px 30px -8px rgba(13,52,92,.18);
+    --shadow-lg:0 28px 64px -22px rgba(6,24,47,.45);
+    --maxw:1180px;
+    --font-d:"Sora",-apple-system,system-ui,sans-serif;
+    --font-b:"Mulish",-apple-system,system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-b);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--font-d);line-height:1.08;letter-spacing:-.02em;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--font-d);font-weight:600;font-size:.78rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--blue-500);display:inline-flex;align-items:center;gap:.6em;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--blue-500);display:inline-block}
+  .section{padding:104px 0}
+  .section-head{max-width:680px;margin-bottom:54px}
+  .section-head h2{font-size:clamp(2rem,4vw,3rem);margin:18px 0 14px;font-weight:800}
+  .section-head p{color:var(--ink-soft);font-size:1.08rem}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-d);font-weight:600;
+    font-size:.96rem;padding:.92em 1.5em;border-radius:999px;cursor:pointer;border:1.5px solid transparent;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;white-space:nowrap;
+  }
+  .btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 8px 22px -8px rgba(26,115,212,.7)}
+  .btn-primary:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(26,115,212,.8)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.6)}
+  .btn-dark{background:var(--navy-800);color:#fff}
+  .btn-dark:hover{background:var(--navy-700);transform:translateY(-2px)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
+    padding:18px 0;
+  }
+  header.nav.scrolled{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand .mark{
+    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+    background:linear-gradient(145deg,var(--blue-500),var(--navy-700));color:#fff;font-family:var(--font-d);
+    font-weight:800;font-size:1rem;letter-spacing:.02em;box-shadow:var(--shadow-md);
+  }
+  .brand .txt{line-height:1.15}
+  .brand .txt b{font-family:var(--font-d);font-weight:700;font-size:.98rem;display:block;color:#fff;transition:color .3s}
+  .brand .txt span{font-size:.72rem;color:rgba(255,255,255,.7);transition:color .3s;letter-spacing:.02em}
+  header.nav.scrolled .brand .txt b{color:var(--ink)}
+  header.nav.scrolled .brand .txt span{color:var(--ink-soft)}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.92rem;font-weight:600;color:rgba(255,255,255,.82);transition:color .25s;position:relative}
+  .nav-links a:hover{color:#fff}
+  header.nav.scrolled .nav-links a{color:var(--ink-soft)}
+  header.nav.scrolled .nav-links a:hover{color:var(--blue-500)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+  .menu-toggle span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+  header.nav.scrolled .menu-toggle span{background:var(--ink)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    background:radial-gradient(120% 120% at 78% 18%,#10406f 0%,var(--navy-800) 42%,var(--navy-900) 100%);
+    padding:140px 0 90px;color:#fff;}
+  #neural{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.9}
+  .hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(80% 60% at 20% 80%,rgba(26,115,212,.22),transparent 70%),
+               linear-gradient(180deg,transparent 60%,rgba(6,24,47,.55) 100%);}
+  .hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;width:100%}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .pill{display:inline-flex;align-items:center;gap:.5em;font-size:.8rem;font-weight:600;font-family:var(--font-d);
+    padding:.5em 1em;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);
+    color:rgba(255,255,255,.92);backdrop-filter:blur(6px)}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(92,198,245,.25)}
+  .pill.accent .dot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .hero h1{font-size:clamp(2.5rem,5.4vw,4.6rem);font-weight:800;letter-spacing:-.03em}
+  .hero h1 .grad{background:linear-gradient(100deg,#fff 10%,var(--cyan) 60%,#fff 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero h1 small{display:block;font-size:.46em;font-weight:600;color:var(--cyan);letter-spacing:.04em;margin-bottom:.35em;text-transform:uppercase}
+  .hero .sub{font-size:1.12rem;color:rgba(255,255,255,.8);max-width:520px;margin:22px 0 14px}
+  .hero .tagline{display:flex;align-items:center;gap:14px;margin:8px 0 32px;color:rgba(255,255,255,.92);font-style:italic;font-size:1.02rem}
+  .eeg{width:64px;height:24px;flex-shrink:0}
+  .eeg path{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:200;animation:eeg 2.4s linear infinite}
+  @keyframes eeg{to{stroke-dashoffset:-200}}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+
+  /* Hero side card — countdown */
+  .count-card{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:24px;
+    padding:30px 30px 26px;backdrop-filter:blur(16px);box-shadow:var(--shadow-lg);
+  }
+  .count-card .ct-label{font-family:var(--font-d);font-weight:600;font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+  .count-card .ct-event{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:22px}
+  .count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .ct-cell{background:rgba(6,24,47,.4);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 6px;text-align:center}
+  .ct-cell b{font-family:var(--font-d);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);display:block;color:#fff;font-variant-numeric:tabular-nums}
+  .ct-cell span{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6)}
+  .count-card .ct-foot{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.86rem;color:rgba(255,255,255,.78)}
+  .count-card .ct-foot b{color:#fff;font-family:var(--font-d)}
+
+  .hero-orgs{position:relative;z-index:3;margin-top:54px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+  .hero-orgs .lbl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+  .org{display:flex;align-items:center;gap:11px}
+  .org .badge{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-d);
+    font-weight:800;font-size:.78rem;color:#fff;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+  .org small{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.25}
+
+  /* ---------- EVENTS ---------- */
+  .events{background:var(--white)}
+  .ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .ev-card{position:relative;border-radius:var(--radius);padding:38px 36px;overflow:hidden;
+    border:1px solid var(--line);background:var(--white);box-shadow:var(--shadow-sm);
+    transition:transform .3s ease, box-shadow .3s ease;display:flex;flex-direction:column}
+  .ev-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+  .ev-card.feature{background:linear-gradient(160deg,var(--navy-800),var(--navy-900));color:#fff;border-color:transparent}
+  .ev-card .ev-glow{position:absolute;width:240px;height:240px;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none}
+  .ev-card.feature .ev-glow{background:var(--blue-500);top:-90px;right:-70px}
+  .ev-card:not(.feature) .ev-glow{background:var(--accent-soft);top:-80px;right:-60px;opacity:1}
+  .ev-num{font-family:var(--font-d);font-weight:800;font-size:.82rem;letter-spacing:.06em;padding:.4em .9em;border-radius:999px;
+    align-self:flex-start;margin-bottom:20px;position:relative;z-index:1}
+  .ev-card.feature .ev-num{background:rgba(92,198,245,.18);color:var(--cyan)}
+  .ev-card:not(.feature) .ev-num{background:var(--accent-soft);color:var(--accent)}
+  .ev-card h3{font-size:1.65rem;font-weight:800;position:relative;z-index:1;letter-spacing:-.02em}
+  .ev-card .ev-theme{font-size:1.02rem;margin-top:10px;position:relative;z-index:1}
+  .ev-card.feature .ev-theme{color:rgba(255,255,255,.78)}
+  .ev-card:not(.feature) .ev-theme{color:var(--ink-soft)}
+  .ev-meta{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+  .ev-row{display:flex;align-items:center;gap:12px;font-size:.95rem}
+  .ev-row .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;font-size:1rem}
+  .ev-card.feature .ev-row .ico{background:rgba(255,255,255,.1)}
+  .ev-card:not(.feature) .ev-row .ico{background:var(--bg-tint);color:var(--blue-600)}
+  .ev-card.feature .ev-row span{color:rgba(255,255,255,.9)}
+  .ev-date-big{font-family:var(--font-d);font-weight:800;font-size:2rem;letter-spacing:-.02em;position:relative;z-index:1}
+  .ev-card.feature .ev-date-big{color:#fff}
+  .ev-card:not(.feature) .ev-date-big{color:var(--navy-800)}
+  .ev-date-big small{font-size:.46em;font-weight:600;color:inherit;opacity:.7;display:block;letter-spacing:.04em}
+
+  /* ---------- PROGRAMA ---------- */
+  .programa{background:var(--bg)}
+  .prog-note{display:inline-flex;align-items:center;gap:.5em;font-size:.8rem;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);padding:.4em .9em;border-radius:999px;margin-top:14px;font-family:var(--font-d)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+  .tab{font-family:var(--font-d);font-weight:600;font-size:.92rem;padding:.7em 1.15em;border-radius:13px;border:1.5px solid var(--line);
+    background:var(--white);color:var(--ink-soft);cursor:pointer;transition:.22s;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:96px}
+  .tab small{font-size:.68rem;font-weight:600;letter-spacing:.06em;opacity:.7}
+  .tab b{font-size:1.02rem;font-weight:700}
+  .tab:hover{border-color:var(--blue-400);color:var(--blue-600)}
+  .tab.active{background:var(--blue-500);border-color:var(--blue-500);color:#fff}
+  .tab.active small{opacity:.85}
+  .tab.sim.active{background:var(--accent);border-color:var(--accent)}
+  .tab.sim:hover{border-color:var(--accent);color:var(--accent)}
+  .panel{display:none;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .panel-head{display:flex;align-items:baseline;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+  .panel-head h3{font-size:1.5rem;font-weight:800}
+  .panel-head .ph-tag{font-size:.82rem;font-weight:600;color:#fff;background:var(--blue-500);padding:.3em .8em;border-radius:999px;font-family:var(--font-d)}
+  .panel-head .ph-tag.sim{background:var(--accent)}
+  .sched{display:flex;flex-direction:column;gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .slot{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:20px 28px;border-bottom:1px solid var(--line);transition:background .2s}
+  .slot:last-child{border-bottom:0}
+  .slot:hover{background:var(--bg-tint)}
+  .slot .time{font-family:var(--font-d);font-weight:700;color:var(--blue-600);font-size:.96rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .slot .time small{display:block;font-weight:500;color:var(--ink-soft);font-size:.74rem;letter-spacing:.04em}
+  .slot .topic b{font-size:1.04rem;font-weight:700;display:block}
+  .slot .topic span{color:var(--ink-soft);font-size:.92rem}
+  .slot.break{background:var(--bg-tint)}
+  .slot.break .topic b{color:var(--ink-soft);font-weight:600}
+
+  /* ---------- COSTOS ---------- */
+  .costos{background:var(--white)}
+  .cost-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .cost-card{border:1.5px solid var(--line);border-radius:var(--radius);padding:30px 26px;text-align:left;
+    transition:.28s;position:relative;background:var(--white);display:flex;flex-direction:column}
+  .cost-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--blue-400)}
+  .cost-card.pop{border-color:var(--blue-500);box-shadow:0 18px 40px -16px rgba(26,115,212,.35)}
+  .cost-tag{position:absolute;top:18px;right:18px;font-family:var(--font-d);font-size:.66rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:#fff;background:var(--blue-500);padding:.35em .8em;border-radius:999px}
+  .cost-card h4{font-size:1.05rem;font-weight:700;color:var(--ink);min-height:2.4em;display:flex;align-items:flex-start}
+  .cost-price{font-family:var(--font-d);font-weight:800;font-size:2.6rem;color:var(--navy-800);letter-spacing:-.03em;margin:14px 0 4px}
+  .cost-price small{font-size:.38em;font-weight:600;color:var(--blue-500);vertical-align:top;margin-right:2px}
+  .cost-card .cost-foot{margin-top:18px;font-size:.86rem;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+  .cost-card .cost-foot::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--accent-soft);
+    display:grid;flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d97742' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+
+  /* ---------- INSCRIPCION ---------- */
+  .inscripcion{background:linear-gradient(165deg,var(--navy-800),var(--navy-900));color:#fff;position:relative;overflow:hidden}
+  .inscripcion .ev-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:var(--blue-600);filter:blur(120px);opacity:.35;top:-120px;left:-100px;pointer-events:none}
+  .ins-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;position:relative;z-index:1}
+  .ins-info .eyebrow{color:var(--cyan)}
+  .ins-info .eyebrow::before{background:var(--cyan)}
+  .ins-info h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:800;margin:16px 0 16px}
+  .ins-info p{color:rgba(255,255,255,.78);font-size:1.05rem;max-width:440px}
+  .pay-box{margin-top:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 26px;backdrop-filter:blur(10px)}
+  .pay-box h4{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .pay-rows{display:grid;gap:12px}
+  .pay-row{display:flex;justify-content:space-between;gap:16px;font-size:.94rem;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .pay-row:last-child{border-bottom:0;padding-bottom:0}
+  .pay-row span{color:rgba(255,255,255,.62)}
+  .pay-row b{font-family:var(--font-d);font-weight:600;color:#fff;text-align:right}
+  .pay-row b.acct{letter-spacing:.04em;font-variant-numeric:tabular-nums}
+
+  .form-card{background:var(--white);border-radius:var(--radius);padding:36px 34px;box-shadow:var(--shadow-lg);color:var(--ink)}
+  .form-card h3{font-size:1.4rem;font-weight:800;margin-bottom:6px}
+  .form-card .fc-sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:24px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:6px;font-family:var(--font-d)}
+  .field input,.field select{width:100%;font-family:var(--font-b);font-size:.96rem;padding:.8em 1em;border:1.5px solid var(--line);
+    border-radius:12px;background:var(--bg);color:var(--ink);transition:.2s;outline:none}
+  .field input:focus,.field select:focus{border-color:var(--blue-500);background:#fff;box-shadow:0 0 0 4px rgba(26,115,212,.12)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-card .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:1.05em}
+  .form-success{display:none;text-align:center;padding:30px 10px}
+  .form-success.show{display:block;animation:fade .4s ease}
+  .form-success .check{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;margin:0 auto 18px}
+  .form-success .check svg{stroke:var(--accent)}
+  .form-success h3{margin-bottom:8px}
+  .form-success p{color:var(--ink-soft);margin-bottom:22px}
+
+  /* ---------- AUSPICIADORES ---------- */
+  .sponsors{background:var(--bg)}
+  .sponsors .section-head{text-align:center;margin-left:auto;margin-right:auto}
+  .sp-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+  .sp{font-family:var(--font-d);font-weight:700;font-size:1.05rem;letter-spacing:.01em;color:var(--ink-soft);
+    background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 30px;min-width:150px;text-align:center;
+    transition:.25s;box-shadow:var(--shadow-sm)}
+  .sp:hover{color:var(--navy-800);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .sp small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-500);opacity:.7}
+
+  /* ---------- CONTACTO / FOOTER ---------- */
+  footer{background:var(--navy-900);color:#fff;padding:80px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand .brand .txt b{color:#fff}
+  .foot-brand .brand .txt span{color:rgba(255,255,255,.6)}
+  .foot-brand p{color:rgba(255,255,255,.6);font-size:.94rem;margin-top:18px;max-width:330px}
+  .foot-col h5{font-family:var(--font-d);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;font-weight:600}
+  .foot-col a,.foot-col p{display:block;color:rgba(255,255,255,.72);font-size:.94rem;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-phones{font-family:var(--font-d);font-weight:600;font-variant-numeric:tabular-nums}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:28px;color:rgba(255,255,255,.5);font-size:.85rem}
+
+  /* ---------- WHATSAPP FAB ---------- */
+  .wa-fab{position:fixed;bottom:26px;right:26px;z-index:80;display:flex;align-items:center;gap:0;
+    background:#25D366;color:#fff;border-radius:999px;padding:14px;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);
+    transition:.3s;overflow:hidden;max-width:54px;font-family:var(--font-d);font-weight:600}
+  .wa-fab:hover{max-width:230px;padding-right:22px}
+  .wa-fab svg{width:26px;height:26px;flex-shrink:0}
+  .wa-fab .wa-txt{white-space:nowrap;margin-left:12px;opacity:0;transition:opacity .25s .05s;font-size:.92rem}
+  .wa-fab:hover .wa-txt{opacity:1}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .hero-grid,.ins-grid{grid-template-columns:1fr;gap:38px}
+    .ev-grid{grid-template-columns:1fr}
+    .cost-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,82vw);background:var(--navy-900);flex-direction:column;
+      justify-content:center;gap:26px;transform:translateX(100%);transition:transform .35s ease;z-index:70;padding:40px}
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{color:#fff;font-size:1.1rem}
+    header.nav.scrolled .nav-links a{color:#fff}
+    .menu-toggle{display:flex}
+    .nav-cta .btn{display:none}
+    .section{padding:74px 0}
+    .wrap{padding:0 20px}
+    .cost-grid{grid-template-columns:1fr}
+    .field-row{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .slot{grid-template-columns:1fr;gap:6px}
+    .slot .time{color:var(--blue-600)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .eeg path{animation:none;stroke-dashoffset:0}
+    *{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#inicio" class="brand">
+      <div class="mark">SBN</div>
+      <div class="txt">
+        <b>Jornada Nacional de Neurología</b>
+        <span>Oruro · Bolivia · 2023</span>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#eventos">Eventos</a>
+      <a href="#programa">Programa</a>
+      <a href="#costos">Costos</a>
+      <a href="#inscripcion">Inscripción</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#inscripcion" class="btn btn-primary">Inscríbete</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <canvas id="neural"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badges">
+          <span class="pill"><span class="dot"></span> Presencial · Oruro</span>
+          <span class="pill"><span class="dot"></span> Virtual vía ZOOM</span>
+          <span class="pill accent"><span class="dot"></span> Cupos limitados</span>
+        </div>
+        <h1>
+          <small>4ta Jornada Nacional de Neurología</small>
+          Actualizaciones en <span class="grad">enfermedades neurológicas</span>
+        </h1>
+        <p class="sub">Un encuentro académico de alto nivel que reúne a especialistas, médicos, residentes y estudiantes en torno a los avances de la neurología clínica y las emergencias neurológicas.</p>
+        <div class="tagline">
+          <svg class="eeg" viewBox="0 0 64 24"><path d="M0 12 H14 L18 4 L22 20 L26 12 H38 L42 6 L46 18 L50 12 H64"/></svg>
+          <span>“Desde Oruro, Bolivia para el mundo”</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#inscripcion" class="btn btn-primary">Quiero inscribirme →</a>
+          <a href="#programa" class="btn btn-ghost">Ver programa</a>
+        </div>
+      </div>
+
+      <aside class="count-card">
+        <div class="ct-label">Cuenta regresiva</div>
+        <div class="ct-event">Inauguración de la Jornada · 13 de septiembre</div>
+        <div class="count-grid" id="countdown">
+          <div class="ct-cell"><b id="cd-d">00</b><span>días</span></div>
+          <div class="ct-cell"><b id="cd-h">00</b><span>horas</span></div>
+          <div class="ct-cell"><b id="cd-m">00</b><span>min</span></div>
+          <div class="ct-cell"><b id="cd-s">00</b><span>seg</span></div>
+        </div>
+        <div class="ct-foot">
+          <span>“El poder de tus brazos Oruro”</span>
+          <b>5 días<br>de academia</b>
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero-orgs">
+      <span class="lbl">Organizan</span>
+      <div class="org">
+        <div class="badge">SBN</div>
+        <small>Sociedad Boliviana<br>de Neurología · 1975</small>
+      </div>
+      <div class="org">
+        <div class="badge">CMO</div>
+        <small>Colegio Médico<br>de Oruro</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EVENTOS ===================== -->
+<section class="section events" id="eventos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Dos eventos · una sede</span>
+      <h2>Cinco días dedicados al cerebro y al sistema nervioso</h2>
+      <p>La Jornada Nacional y el Simposio Internacional se desarrollan de forma consecutiva, en modalidad híbrida: asiste de manera presencial en Oruro o conéctate en vivo desde cualquier lugar del mundo.</p>
+    </div>
+    <div class="ev-grid">
+      <article class="ev-card feature">
+        <span class="ev-glow"></span>
+        <span class="ev-num">4ta Jornada Nacional</span>
+        <h3>Jornada Nacional de Neurología</h3>
+        <p class="ev-theme">Actualizaciones en enfermedades neurológicas — conferencias magistrales, casos clínicos y mesas de debate con referentes nacionales.</p>
+        <div class="ev-meta">
+          <div class="ev-date-big"><small>Septiembre 2023</small>13 · 14 · 15</div>
+          <div class="ev-row"><div class="ico">📍</div><span>Presencial en Oruro + Virtual vía ZOOM</span></div>
+        </div>
+      </article>
+      <article class="ev-card">
+        <span class="ev-glow"></span>
+        <span class="ev-num">2do Simposio Internacional</span>
+        <h3>Simposio de Emergencias Neurológicas</h3>
+        <p class="ev-theme">Manejo de las urgencias neurológicas con invitados internacionales: stroke, status epiléptico, trauma y cuidado neurocrítico.</p>
+        <div class="ev-meta">
+          <div class="ev-date-big"><small>Septiembre 2023</small>16 · 17</div>
+          <div class="ev-row"><div class="ico">💻</div><span>Modalidad Virtual vía ZOOM</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROGRAMA ===================== -->
+<section class="section programa" id="programa">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Programa académico</span>
+      <h2>Cronograma por días</h2>
+      <p>Navega el programa de cada jornada. Las conferencias presenciales se transmiten simultáneamente por ZOOM.</p>
+      <div class="prog-note">⚠ Programa preliminar — sujeto a confirmación de horarios y disertantes</div>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="d1"><small>MIÉ · JORNADA</small><b>13 sep</b></button>
+      <button class="tab" data-tab="d2"><small>JUE · JORNADA</small><b>14 sep</b></button>
+      <button class="tab" data-tab="d3"><small>VIE · JORNADA</small><b>15 sep</b></button>
+      <button class="tab sim" data-tab="d4"><small>SÁB · SIMPOSIO</small><b>16 sep</b></button>
+      <button class="tab sim" data-tab="d5"><small>DOM · SIMPOSIO</small><b>17 sep</b></button>
+    </div>
+
+    <!-- D1 -->
+    <div class="panel active" id="d1">
+      <div class="panel-head"><h3>Día 1 · Inauguración</h3><span class="ph-tag">4ta Jornada Nacional</span></div>
+      <div class="sched">
+        <div class="slot"><div class="time">08:00<small>—09:00</small></div><div class="topic"><b>Acreditación y entrega de credenciales</b><span>Registro de asistentes presenciales y habilitación de sala virtual.</span></div></div>
+        <div class="slot"><div class="time">09:00<small>—09:45</small></div><div class="topic"><b>Acto inaugural</b><span>Palabras de la Sociedad Boliviana de Neurología y el Colegio Médico de Oruro.</span></div></div>
+        <div class="slot"><div class="time">10:00<small>—12:30</small></div><div class="topic"><b>Módulo: Enfermedad cerebrovascular</b><span>Conferencias magistrales y discusión de casos clínicos.</span></div></div>
+        <div class="slot break"><div class="time">12:30<small>—14:00</small></div><div class="topic"><b>Receso · almuerzo</b></div></div>
+        <div class="slot"><div class="time">14:00<small>—17:30</small></div><div class="topic"><b>Módulo: Epilepsia y trastornos del movimiento</b><span>Actualización diagnóstica y terapéutica.</span></div></div>
+      </div>
+    </div>
+    <!-- D2 -->
+    <div class="panel" id="d2">
+      <div class="panel-head"><h3>Día 2 · Neurología clínica</h3><span class="ph-tag">4ta Jornada Nacional</span></div>
+      <div class="sched">
+        <div class="slot"><div class="time">08:30<small>—10:30</small></div><div class="topic"><b>Módulo: Cefaleas y dolor neuropático</b><span>Abordaje práctico para el médico general.</span></div></div>
+        <div class="slot"><div class="time">10:30<small>—12:30</small></div><div class="topic"><b>Módulo: Enfermedades desmielinizantes</b><span>Esclerosis múltiple y trastornos relacionados.</span></div></div>
+        <div class="slot break"><div class="time">12:30<small>—14:00</small></div><div class="topic"><b>Receso · almuerzo</b></div></div>
+        <div class="slot"><div class="time">14:00<small>—17:00</small></div><div class="topic"><b>Módulo: Neuroinfectología</b><span>Casos en altura y patología regional.</span></div></div>
+      </div>
+    </div>
+    <!-- D3 -->
+    <div class="panel" id="d3">
+      <div class="panel-head"><h3>Día 3 · Cierre de la Jornada</h3><span class="ph-tag">4ta Jornada Nacional</span></div>
+      <div class="sched">
+        <div class="slot"><div class="time">08:30<small>—10:30</small></div><div class="topic"><b>Módulo: Deterioro cognitivo y demencias</b><span>Diagnóstico temprano y manejo integral.</span></div></div>
+        <div class="slot"><div class="time">10:30<small>—12:30</small></div><div class="topic"><b>Mesa redonda interdisciplinaria</b><span>Neurología, psiquiatría y rehabilitación.</span></div></div>
+        <div class="slot break"><div class="time">12:30<small>—14:00</small></div><div class="topic"><b>Receso · almuerzo</b></div></div>
+        <div class="slot"><div class="time">14:00<small>—16:30</small></div><div class="topic"><b>Trabajos libres y conclusiones</b><span>Presentación de pósters y clausura de la Jornada.</span></div></div>
+      </div>
+    </div>
+    <!-- D4 -->
+    <div class="panel" id="d4">
+      <div class="panel-head"><h3>Día 4 · Apertura del Simposio</h3><span class="ph-tag sim">2do Simposio Internacional</span></div>
+      <div class="sched">
+        <div class="slot"><div class="time">09:00<small>—09:30</small></div><div class="topic"><b>Apertura del Simposio Internacional</b><span>Conexión simultánea con invitados del exterior.</span></div></div>
+        <div class="slot"><div class="time">09:30<small>—12:30</small></div><div class="topic"><b>Emergencia: Stroke agudo</b><span>Código ictus, trombólisis y trombectomía.</span></div></div>
+        <div class="slot break"><div class="time">12:30<small>—14:00</small></div><div class="topic"><b>Receso</b></div></div>
+        <div class="slot"><div class="time">14:00<small>—17:00</small></div><div class="topic"><b>Status epiléptico y crisis</b><span>Protocolos de manejo en urgencias.</span></div></div>
+      </div>
+    </div>
+    <!-- D5 -->
+    <div class="panel" id="d5">
+      <div class="panel-head"><h3>Día 5 · Cierre internacional</h3><span class="ph-tag sim">2do Simposio Internacional</span></div>
+      <div class="sched">
+        <div class="slot"><div class="time">09:00<small>—11:30</small></div><div class="topic"><b>Cuidado neurocrítico</b><span>Manejo del paciente neurológico grave.</span></div></div>
+        <div class="slot"><div class="time">11:30<small>—13:00</small></div><div class="topic"><b>Trauma craneoencefálico</b><span>Decisiones en la urgencia y derivación.</span></div></div>
+        <div class="slot break"><div class="time">13:00<small>—14:00</small></div><div class="topic"><b>Receso</b></div></div>
+        <div class="slot"><div class="time">14:00<small>—16:00</small></div><div class="topic"><b>Conclusiones y entrega de certificados</b><span>Clausura del Simposio Internacional.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COSTOS ===================== -->
+<section class="section costos" id="costos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Inversión</span>
+      <h2>Costos de inscripción</h2>
+      <p>La inscripción incluye acceso a la Jornada Nacional y al Simposio Internacional, material académico y certificado digital. Precios en bolivianos (Bs).</p>
+    </div>
+    <div class="cost-grid">
+      <div class="cost-card pop">
+        <span class="cost-tag">Completo</span>
+        <h4>Especialidades</h4>
+        <div class="cost-price"><small>Bs</small>350</div>
+        <div class="cost-foot">Jornada + Simposio + certificado</div>
+      </div>
+      <div class="cost-card">
+        <h4>Médicos generales</h4>
+        <div class="cost-price"><small>Bs</small>200</div>
+        <div class="cost-foot">Acceso a ambos eventos</div>
+      </div>
+      <div class="cost-card">
+        <h4>Lic. de enfermería y residentes</h4>
+        <div class="cost-price"><small>Bs</small>150</div>
+        <div class="cost-foot">Acceso a ambos eventos</div>
+      </div>
+      <div class="cost-card">
+        <h4>Estudiantes y otros</h4>
+        <div class="cost-price"><small>Bs</small>100</div>
+        <div class="cost-foot">Con credencial vigente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INSCRIPCION ===================== -->
+<section class="section inscripcion" id="inscripcion">
+  <span class="ev-glow"></span>
+  <div class="wrap">
+    <div class="ins-grid">
+      <div class="ins-info">
+        <span class="eyebrow">Reserva tu lugar</span>
+        <h2>Inscríbete a la Jornada y al Simposio</h2>
+        <p>Completa el formulario para reservar tu cupo. Luego realiza el depósito o transferencia y envía tu comprobante por WhatsApp para confirmar tu participación.</p>
+
+        <div class="pay-box">
+          <h4>💳 Modos de pago — Depósito o transferencia</h4>
+          <div class="pay-rows">
+            <div class="pay-row"><span>Entidad</span><b>Banco Unión S.A.</b></div>
+            <div class="pay-row"><span>N.º de cuenta</span><b class="acct">10000034276390</b></div>
+            <div class="pay-row"><span>Titular</span><b>Raquel Madaín Prieto</b></div>
+            <div class="pay-row"><span>Comprobante</span><b>Enviar por WhatsApp</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="regForm" novalidate>
+          <h3>Formulario de inscripción</h3>
+          <p class="fc-sub">Completa tus datos y te contactaremos para confirmar.</p>
+          <div class="field">
+            <label for="f-name">Nombre completo</label>
+            <input type="text" id="f-name" name="name" placeholder="Ej. Dra. Ana Quispe" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Correo electrónico</label>
+              <input type="email" id="f-email" name="email" placeholder="tu@correo.com" required />
+            </div>
+            <div class="field">
+              <label for="f-phone">Celular / WhatsApp</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="Ej. 70000000" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-cat">Categoría</label>
+              <select id="f-cat" name="cat" required>
+                <option value="" disabled selected>Selecciona…</option>
+                <option>Especialidad — Bs350</option>
+                <option>Médico general — Bs200</option>
+                <option>Lic. enfermería / Residente — Bs150</option>
+                <option>Estudiante u otros — Bs100</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-mod">Modalidad</label>
+              <select id="f-mod" name="mod" required>
+                <option value="" disabled selected>Selecciona…</option>
+                <option>Presencial — Oruro</option>
+                <option>Virtual — ZOOM</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-city">Ciudad / País</label>
+            <input type="text" id="f-city" name="city" placeholder="Ej. Oruro, Bolivia" />
+          </div>
+          <button type="submit" class="btn btn-primary">Reservar mi cupo →</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="check"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>¡Inscripción registrada!</h3>
+          <p id="successMsg">Gracias por inscribirte. Realiza el pago y envía tu comprobante por WhatsApp para confirmar tu cupo.</p>
+          <a href="#" id="successWa" class="btn btn-dark" target="_blank" rel="noopener">Enviar comprobante por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AUSPICIADORES ===================== -->
+<section class="section sponsors" id="auspiciadores">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Con el respaldo de</span>
+      <h2>Auspiciadores</h2>
+    </div>
+    <div class="sp-grid">
+      <div class="sp"><small>Laboratorio</small>Bagó</div>
+      <div class="sp"><small>Pharma</small>Breskot</div>
+      <div class="sp"><small>Laboratorio</small>Megalabs</div>
+      <div class="sp"><small>Laboratorio</small>Saval</div>
+      <div class="sp"><small>Laboratorio</small>Ferrer</div>
+      <div class="sp"><small>Laboratorio</small>Prestat</div>
+      <div class="sp"><small>Laboratorio</small>Talflex</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#inicio" class="brand">
+          <div class="mark">SBN</div>
+          <div class="txt"><b>Jornada Nacional de Neurología</b><span>Oruro · Bolivia · 2023</span></div>
+        </a>
+        <p>4ta Jornada Nacional de Neurología y 2do Simposio Internacional de Emergencias Neurológicas. Desde Oruro, Bolivia para el mundo.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Informes</h5>
+        <p class="foot-phones">72475801</p>
+        <p class="foot-phones">61823204</p>
+        <p class="foot-phones">60401731</p>
+        <a href="#inscripcion">Inscripciones</a>
+      </div>
+      <div class="foot-col">
+        <h5>Navegación</h5>
+        <a href="#eventos">Eventos</a>
+        <a href="#programa">Programa</a>
+        <a href="#costos">Costos</a>
+        <a href="#auspiciadores">Auspiciadores</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2023 Sociedad Boliviana de Neurología · Colegio Médico de Oruro</span>
+      <span>“El poder de tus brazos Oruro”</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== WHATSAPP FAB ===================== -->
+<a href="https://wa.me/59172475801?text=Hola,%20quiero%20información%20sobre%20la%204ta%20Jornada%20Nacional%20de%20Neurología" class="wa-fab" target="_blank" rel="noopener" aria-label="Informes por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.739-.981 0 .001zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span class="wa-txt">Informes por WhatsApp</span>
+</a>
+
+<script>
+/* ---------- NAV scroll + mobile menu ---------- */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ---------- PROGRAMA tabs ---------- */
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+tabs.forEach(tab => tab.addEventListener('click', () => {
+  tabs.forEach(t => t.classList.remove('active'));
+  panels.forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById(tab.dataset.tab).classList.add('active');
+}));
+
+/* ---------- COUNTDOWN (a la próxima inauguración: 13 sep) ---------- */
+function nextEventDate(){
+  const now = new Date();
+  let y = now.getFullYear();
+  let d = new Date(y, 8, 13, 8, 0, 0);       // 13 de septiembre, 08:00
+  if (d.getTime() < now.getTime()) d = new Date(y + 1, 8, 13, 8, 0, 0);
+  return d;
+}
+const target = nextEventDate();
+const pad = n => String(n).padStart(2, '0');
+const el = {d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+function tick(){
+  let diff = Math.max(0, target.getTime() - Date.now());
+  const day = Math.floor(diff / 86400000); diff -= day*86400000;
+  const hr  = Math.floor(diff / 3600000);  diff -= hr*3600000;
+  const mn  = Math.floor(diff / 60000);    diff -= mn*60000;
+  const sc  = Math.floor(diff / 1000);
+  el.d.textContent = pad(day); el.h.textContent = pad(hr);
+  el.m.textContent = pad(mn);  el.s.textContent = pad(sc);
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- FORM ---------- */
+const form = document.getElementById('regForm');
+const success = document.getElementById('formSuccess');
+const successMsg = document.getElementById('successMsg');
+const successWa = document.getElementById('successWa');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!form.checkValidity()){ form.reportValidity(); return; }
+  const data = Object.fromEntries(new FormData(form).entries());
+  try { localStorage.setItem('neuro_inscripcion', JSON.stringify({...data, ts: Date.now()})); } catch(_){}
+  successMsg.textContent = `¡Gracias, ${data.name.split(' ')[0]}! Tu pre-inscripción (${data.cat}) quedó registrada. Realiza el pago y envía tu comprobante por WhatsApp para confirmar tu cupo.`;
+  const waText = encodeURIComponent(`Hola, me inscribí a la 4ta Jornada Nacional de Neurología.\nNombre: ${data.name}\nCategoría: ${data.cat}\nModalidad: ${data.mod}\nAdjunto mi comprobante de pago.`);
+  successWa.href = `https://wa.me/59172475801?text=${waText}`;
+  form.style.display = 'none';
+  success.classList.add('show');
+});
+
+/* ---------- NEURAL NETWORK CANVAS ---------- */
+(function(){
+  const canvas = document.getElementById('neural');
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, nodes = [], raf;
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * DPR; canvas.height = h * DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    const count = Math.min(80, Math.floor(w*h/15000));
+    nodes = Array.from({length:count}, () => ({
+      x:Math.random()*w, y:Math.random()*h,
+      vx:(Math.random()-.5)*.32, vy:(Math.random()-.5)*.32,
+      r:Math.random()*1.8+1
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if(a.x<0||a.x>w) a.vx*=-1;
+      if(a.y<0||a.y>h) a.vy*=-1;
+      for(let j=i+1;j<nodes.length;j++){
+        const b = nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y, dist=Math.hypot(dx,dy);
+        if(dist<140){
+          const op = (1-dist/140)*.5;
+          ctx.strokeStyle = `rgba(92,198,245,${op})`;
+          ctx.lineWidth = .7;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(150,210,250,.85)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r*3,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(92,198,245,.08)'; ctx.fill();
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  resize();
+  if(reduce){ draw(); cancelAnimationFrame(raf); }
+  else { draw(); }
+  let rt;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt=setTimeout(resize,200); });
+})();
+</script>
+</body>
+</html>
