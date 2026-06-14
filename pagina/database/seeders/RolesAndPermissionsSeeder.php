@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -13,50 +15,31 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $permissions = [
-            // Usuarios
-            'ver-usuarios',
-            'crear-usuarios',
-            'editar-usuarios',
-            'eliminar-usuarios',
-            // Cronograma
-            'ver-cronograma',
-            'gestionar-cronograma',
-            // Cursos
-            'ver-cursos',
-            'crear-cursos',
-            'editar-cursos',
-            'eliminar-cursos',
-            // Contenido del curso
-            'ver-contenido',
-            'crear-contenido',
-            'editar-contenido',
-            'eliminar-contenido',
-            // Inscripciones
-            'ver-inscripciones',
-            'confirmar-inscripciones',
-            'eliminar-inscripciones',
+            'ver-usuarios', 'crear-usuarios', 'editar-usuarios', 'eliminar-usuarios',
+            'ver-cronograma', 'gestionar-cronograma',
+            'ver-cursos', 'crear-cursos', 'editar-cursos', 'eliminar-cursos',
+            'ver-contenido', 'crear-contenido', 'editar-contenido', 'eliminar-contenido',
+            'ver-inscripciones', 'confirmar-inscripciones', 'eliminar-inscripciones',
         ];
 
         foreach ($permissions as $permission) {
             Permission::firstOrCreate(['name' => $permission]);
         }
 
-        $admin = Role::firstOrCreate(['name' => 'admin']);
-        $admin->syncPermissions($permissions);
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $adminRole->syncPermissions($permissions);
 
-        $editor = Role::firstOrCreate(['name' => 'editor']);
-        $editor->syncPermissions([
-            'ver-cronograma', 'gestionar-cronograma',
-            'ver-cursos', 'crear-cursos', 'editar-cursos',
-            'ver-contenido', 'crear-contenido', 'editar-contenido',
-            'ver-inscripciones',
-        ]);
+        Role::firstOrCreate(['name' => 'participante']);
 
-        $usuario = Role::firstOrCreate(['name' => 'usuario']);
-        $usuario->syncPermissions([
-            'ver-cronograma',
-            'ver-cursos',
-            'ver-contenido',
-        ]);
+        // Create admin user
+        $adminUser = User::updateOrCreate(
+            ['nickname' => 'admin'],
+            [
+                'name'     => 'Administrador',
+                'email'    => 'admin@neurooruro.bo',
+                'password' => Hash::make('admin1234'),
+            ]
+        );
+        $adminUser->assignRole('admin');
     }
 }
