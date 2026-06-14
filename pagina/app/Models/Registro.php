@@ -21,6 +21,11 @@ class Registro extends Model
         'confirmado' => 'boolean',
     ];
 
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
     public function getNombreCompletoAttribute(): string
     {
         return trim("{$this->firstName} {$this->secondName} {$this->firstSurname} {$this->secondSurname}");

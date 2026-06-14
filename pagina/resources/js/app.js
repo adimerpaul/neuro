@@ -32,11 +32,7 @@ if (tabs.length) {
 
 /* ---------- COUNTDOWN ---------- */
 function nextEventDate() {
-    const now = new Date();
-    let y = now.getFullYear();
-    let d = new Date(y, 8, 13, 8, 0, 0);
-    if (d.getTime() < now.getTime()) d = new Date(y + 1, 8, 13, 8, 0, 0);
-    return d;
+    return new Date(2026, 6, 23, 9, 0, 0); // 23 julio 2026, 09:00
 }
 const cdEls = {
     d: document.getElementById('cd-d'),
@@ -157,7 +153,7 @@ if (regForm) {
                 const dist = Math.hypot(dx, dy);
                 if (dist < 140) {
                     const op = (1 - dist / 140) * .5;
-                    ctx.strokeStyle = `rgba(92,198,245,${op})`;
+                    ctx.strokeStyle = `rgba(231,76,60,${op})`;
                     ctx.lineWidth = .7;
                     ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
                 }
@@ -165,9 +161,9 @@ if (regForm) {
         }
         for (const n of nodes) {
             ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(150,210,250,.85)'; ctx.fill();
+            ctx.fillStyle = 'rgba(255,154,148,.85)'; ctx.fill();
             ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(92,198,245,.08)'; ctx.fill();
+            ctx.fillStyle = 'rgba(231,76,60,.08)'; ctx.fill();
         }
         if (!reduce) raf = requestAnimationFrame(draw);
     }
