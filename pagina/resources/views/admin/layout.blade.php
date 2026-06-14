@@ -12,9 +12,13 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
             --sidebar-bg: #1a0006;
-            --sidebar-width: 220px;
+            --sidebar-width: 240px;
             --crimson: #c0392b;
+            --crimson-dk: #9b0000;
             --bg: #f5f8fc;
+            --white: #fff;
+            --line: #e8e0e2;
+            --ink: #1e0a0d;
         }
         body {
             font-family: 'Mulish', sans-serif;
@@ -28,32 +32,45 @@
             background: var(--sidebar-bg);
             position: fixed; top:0; left:0; bottom:0;
             display: flex; flex-direction: column;
-            z-index: 100;
+            z-index: 200;
+            transition: transform .25s;
         }
         .sb-header {
-            padding: 1.25rem 1rem 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,.08);
         }
-        .sb-logo-icon { font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .sb-logo-icon { font-size: 1.8rem; line-height: 1; }
         .sb-logo-name {
-            font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 700;
+            font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 800;
             color: #fff; line-height: 1.2;
         }
-        .sb-logo-sub { font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: 0.1rem; }
+        .sb-logo-sub { font-size: .68rem; color: rgba(255,255,255,.45); }
         .sb-nav { flex: 1; padding: 0.75rem 0; overflow-y: auto; }
+        .sb-label {
+            display: block;
+            padding: .4rem 1rem .2rem;
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.3);
+        }
         .sb-item {
             display: flex; align-items: center; gap: 0.65rem;
             padding: 0.6rem 1rem;
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,.68);
             text-decoration: none;
-            font-size: 0.83rem; font-weight: 500;
+            font-size: .875rem; font-weight: 500;
             transition: background 0.15s, color 0.15s;
             border-left: 3px solid transparent;
             position: relative;
         }
-        .sb-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
-        .sb-item.active { background: rgba(192,57,43,0.2); color: #fff; border-left-color: var(--crimson); }
-        .sb-item .si-icon { font-size: 0.95rem; width: 1.1rem; text-align: center; }
+        .sb-item:hover { background: rgba(255,255,255,.07); color: #fff; }
+        .sb-item.active { background: rgba(192,57,43,.22); color: #fff; border-left-color: var(--crimson); }
+        .sb-item .si-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
         .sb-badge {
             margin-left: auto;
             background: var(--crimson);
@@ -63,37 +80,51 @@
             font-size: 0.65rem;
             font-weight: 700;
         }
-        .sb-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0.4rem 0; }
+        .sb-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 0.5rem 0; }
         .sb-footer {
-            padding: 0.875rem 1rem;
-            border-top: 1px solid rgba(255,255,255,0.07);
+            padding: .75rem 1rem;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
         }
-        .sb-version { font-size: 0.65rem; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+        .sb-user { display: flex; align-items: center; gap: .6rem; }
+        .sb-avatar {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: var(--crimson); color: #fff; font-family: 'Sora', sans-serif;
+            font-weight: 700; font-size: .8rem; display: grid; place-items: center; flex-shrink: 0;
+        }
+        .sb-user-name { font-size: .82rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sb-user-nick { font-size: .7rem; color: rgba(255,255,255,.45); }
         .sb-logout {
             width: 100%;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 0.4rem;
+            background: none;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 8px;
             color: rgba(255,255,255,0.6);
-            padding: 0.4rem;
+            padding: .45em .75em;
             font-family: 'Mulish', sans-serif;
-            font-size: 0.78rem;
+            font-size: .82rem;
             cursor: pointer;
             transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
         }
-        .sb-logout:hover { background: rgba(255,255,255,0.12); color: #fff; }
+        .sb-logout:hover { background: rgba(255,255,255,.08); color: #fff; }
 
         /* MAIN */
         .admin-main { margin-left: var(--sidebar-width); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
         .admin-topbar {
-            background: #fff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 0.875rem 2rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: .85rem 1.5rem;
             display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; z-index: 50;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 1px 4px rgba(0,0,0,.06);
         }
         .topbar-left { display: flex; align-items: center; gap: 0.75rem; }
-        .topbar-title { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0d0003; }
+        .topbar-title { font-family: 'Sora', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); }
         .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
         .admin-avatar {
             width: 32px; height: 32px; border-radius: 50%;
@@ -103,7 +134,7 @@
         }
         .admin-name { font-size: 0.83rem; font-weight: 600; color: #374151; }
         .admin-role { font-size: 0.7rem; color: #9ca3af; }
-        .admin-content { padding: 1.75rem 2rem; flex: 1; }
+        .admin-content { padding: 2rem 2rem 3rem; flex: 1; }
         /* Alerts */
         .alert-success {
             background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 0.5rem;
@@ -120,27 +151,45 @@
     <aside class="admin-sidebar">
         <div class="sb-header">
             <div class="sb-logo-icon">🧠</div>
-            <div class="sb-logo-name">NeuroOruro</div>
-            <div class="sb-logo-sub">Panel de Administración</div>
+            <div>
+                <div class="sb-logo-name">NeuroOruro</div>
+                <div class="sb-logo-sub">2026</div>
+            </div>
         </div>
 
         <nav class="sb-nav">
-            <a href="{{ route('admin.dashboard') }}" class="sb-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                <span class="si-icon">📊</span> Dashboard
+            <span class="sb-label">Menú</span>
+            <a href="{{ route('portal.dashboard') }}" class="sb-item">
+                <span class="si-icon">📊</span> Mi panel
             </a>
+            <a href="{{ url('/portal/cronograma') }}" class="sb-item">
+                <span class="si-icon">📅</span> Cronograma
+            </a>
+            <a href="{{ url('/portal/recursos') }}" class="sb-item">
+                <span class="si-icon">📚</span> Recursos
+            </a>
+
+            <span class="sb-label" style="margin-top:1rem">Mi cuenta</span>
+            <a href="{{ url('/portal/mis-datos') }}" class="sb-item">
+                <span class="si-icon">👤</span> Mis Datos
+            </a>
+            <a href="{{ url('/portal/cambiar-password') }}" class="sb-item">
+                <span class="si-icon">🔑</span> Cambiar Contraseña
+            </a>
+
+            <span class="sb-label" style="margin-top:1rem">Administración</span>
             <a href="{{ route('admin.participantes.index') }}" class="sb-item {{ request()->routeIs('admin.participantes.*') ? 'active' : '' }}">
                 <span class="si-icon">👥</span> Participantes
                 <span class="sb-badge" id="sb-count">...</span>
             </a>
-            <hr class="sb-divider">
             <a href="{{ route('admin.cronograma.index') }}" class="sb-item {{ request()->routeIs('admin.cronograma.*') ? 'active' : '' }}">
-                <span class="si-icon">📅</span> Cronograma
+                <span class="si-icon">📅</span> Gestionar cronograma
             </a>
             <a href="{{ route('admin.precios.index') }}" class="sb-item {{ request()->routeIs('admin.precios.*') ? 'active' : '' }}">
                 <span class="si-icon">💰</span> Precios
             </a>
             <a href="{{ route('admin.recursos.index') }}" class="sb-item {{ request()->routeIs('admin.recursos.*') ? 'active' : '' }}">
-                <span class="si-icon">📚</span> Recursos
+                <span class="si-icon">📚</span> Gestionar recursos
             </a>
             <a href="{{ route('admin.usuarios.index') }}" class="sb-item {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}">
                 <span class="si-icon">🔐</span> Usuarios
@@ -149,16 +198,19 @@
             <a href="{{ route('home') }}" class="sb-item">
                 <span class="si-icon">🌐</span> Ver sitio
             </a>
-            <a href="{{ route('portal.dashboard') }}" class="sb-item">
-                <span class="si-icon">👤</span> Mi portal
-            </a>
         </nav>
 
         <div class="sb-footer">
-            <div class="sb-version">NeuroOruro 2026 v1.0</div>
+            <div class="sb-user">
+                <div class="sb-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+                <div>
+                    <div class="sb-user-name">{{ auth()->user()->name }}</div>
+                    <div class="sb-user-nick">{{ auth()->user()->nickname }}</div>
+                </div>
+            </div>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="sb-logout">Cerrar sesión</button>
+                <button type="submit" class="sb-logout"><span>↩</span> Salir</button>
             </form>
         </div>
     </aside>

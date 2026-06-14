@@ -27,7 +27,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended(route('portal.dashboard'));
+
+            $fallback = Auth::user()->hasRole('admin')
+                ? route('admin.dashboard')
+                : route('portal.dashboard');
+
+            return redirect()->intended($fallback);
         }
 
         return back()->withErrors([

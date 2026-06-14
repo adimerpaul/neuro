@@ -33,8 +33,20 @@
 
         <template v-if="user.is_admin">
           <span class="sb-label" style="margin-top:1rem">Administración</span>
-          <a href="/admin" class="sb-item">
-            <span class="sb-icon">⚙️</span> Panel Admin
+          <a href="/admin/participantes" class="sb-item">
+            <span class="sb-icon">👥</span> Participantes
+          </a>
+          <a href="/admin/cronograma" class="sb-item">
+            <span class="sb-icon">📅</span> Gestionar cronograma
+          </a>
+          <a href="/admin/precios" class="sb-item">
+            <span class="sb-icon">💰</span> Precios
+          </a>
+          <a href="/admin/recursos" class="sb-item">
+            <span class="sb-icon">📚</span> Gestionar recursos
+          </a>
+          <a href="/admin/usuarios" class="sb-item">
+            <span class="sb-icon">🔐</span> Usuarios
           </a>
         </template>
       </nav>
