@@ -20,9 +20,11 @@
       <a href="#programa">Programa</a>
       <a href="#costos">Costos</a>
       <a href="/inscripcion">Inscripción</a>
+      <a href="{{ route('ingresar') }}">Ingresar</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-cta">
+      <a href="{{ route('ingresar') }}" class="btn btn-ghost">@auth Panel @else Ingresar @endauth</a>
       <a href="/inscripcion" class="btn btn-primary">Inscríbete</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
@@ -51,6 +53,7 @@
         </div>
         <div class="hero-cta">
           <a href="/inscripcion" class="btn btn-primary">Quiero inscribirme →</a>
+          <a href="{{ route('ingresar') }}" class="btn btn-ghost">@auth Ir al panel @else Ingresar @endauth</a>
           <a href="#programa" class="btn btn-ghost">Ver programa</a>
         </div>
       </div>

@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 
 // Rutas públicas
 Route::get('/', fn() => view('home'))->name('home');
+Route::get('/ingresar', function () {
+    if (! auth()->check()) {
+        return redirect()->route('login');
+    }
+
+    return auth()->user()->hasRole('admin')
+        ? redirect()->route('admin.dashboard')
+        : redirect()->route('portal.dashboard');
+})->name('ingresar');
 Route::get('/inscripcion', [RegistroController::class, 'show'])->name('inscripcion');
 Route::post('/inscripcion', [RegistroController::class, 'store'])->name('inscripcion.store');
 
