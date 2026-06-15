@@ -1,4 +1,25 @@
 // app global css in SCSS form
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Mulish:wght@400;600;700&display=swap');
+
+:root {
+  --navy-900: #0d0003;
+  --navy-800: #1a0006;
+  --navy-700: #2d000e;
+  --blue-600: #9b0000;
+  --blue-500: #c0392b;
+  --blue-400: #e74c3c;
+  --cyan: #ff9a94;
+  --accent: oklch(0.62 0.23 22);
+  --accent-soft: oklch(0.62 0.23 22 / 0.12);
+  --ink: #1e0a0d;
+  --ink-soft: #6b3042;
+  --line: #f0dde0;
+  --bg: #fdf5f5;
+  --bg-tint: #f9ecee;
+  --font-d: "Sora", -apple-system, system-ui, sans-serif;
+  --font-b: "Mulish", -apple-system, system-ui, sans-serif;
+}
+
 @font-face {
   font-family: customfont;
   src: url("fonts/Poppins-Regular.ttf");

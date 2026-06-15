@@ -153,28 +153,28 @@ export default defineComponent({
       slide: 1,
       textos: [
         {
-          titulo: '5ta JORNADA NACIONAL DE NEUROLOGÍA',
-          subtitulo: 'Avances en diagnóstico y tratamiento de enfermedades neurológicas',
-          fecha: '12, 13, 14 de Junio',
+          titulo: '1er SIMPOSIO INTERNACIONAL DE ENFERMEDAD CEREBROVASCULAR EN LA ALTURA',
+          subtitulo: '"Oruro Contra el Ictus: Actualización, Código Ictus y Prevención primaria"',
+          fecha: '23, 24 y 25 de Julio 2026 · Oruro, Bolivia',
           img: 'images/1.jpeg',
           imgButton: 'images/logoSBN3 mejorado.gif',
-          textButton: 'Colegio Médico <br> De Oruro'
+          textButton: 'Sociedad Boliviana <br> de Neurología'
         },
         {
-          titulo: '1er CURSO TALLER DE EXPLORACIÓN NEUROLÓGICA',
-          subtitulo: 'Curso Teórico Práctico',
-          fecha: '13 de Junio',
+          titulo: '1er SEMINARIO-TALLER CÓDIGO ICTUS Y MANEJO HOSPITALARIO',
+          subtitulo: 'Formación práctica intensiva en protocolo código ictus y manejo hospitalario',
+          fecha: '24 de Julio 2026 · Hospital Gral. San Juan de Dios · Oruro',
           img: 'images/3.jpg',
           imgButton: 'images/logoColMed3.png',
-          textButton: 'Sociedad Boliviana <br> De Neurologia'
+          textButton: 'Colegio Médico <br> de Oruro'
         },
         {
-          titulo: 'TRANSMISIÓN EN VIVO Y AULA VIRTUAL',
-          subtitulo: 'Transmisión en vivo de las jornadas',
-          fecha: '12, 13, 14 de Junio',
+          titulo: 'MODALIDAD HÍBRIDA — PRESENCIAL Y VIRTUAL',
+          subtitulo: 'Transmisión en vivo de todas las jornadas del simposio',
+          fecha: '23, 24 y 25 de Julio 2026',
           img: 'images/aula2.jpg',
           imgButton: 'images/quirquincho blanco.png',
-          textButton: 'Neuro Oruro'
+          textButton: 'NeuroOruro <br> 2026'
         }
       ]
     }
