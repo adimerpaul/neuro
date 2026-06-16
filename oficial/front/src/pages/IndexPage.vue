@@ -9,7 +9,7 @@
           <div class="col-12 col-md-2">
             <!--                <span class="text-subtitle1 q-pr-sm">Aula virtual </span>-->
             <span class="text-center textMenu changa text-primary">
-                  Neuro Oruro
+                  NeuroOruro 2026
                 </span>
           </div>
           <div class="col-12 col-md-7"></div>

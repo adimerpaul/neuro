@@ -18,7 +18,7 @@
                        href="https://www.facebook.com/profile.php?id=100068249745954"
                        color="primary" class="full-width q-pa-sm" rounded outline>
                   <q-icon name="fa-brands fa-facebook" size="md" class="q-mr-sm" />
-                  <span class="text-subtitle2 text-weight-medium">Facebook<br>5ta Jornada Nacional de Neurología</span>
+                  <span class="text-subtitle2 text-weight-medium">Facebook<br>NeuroOruro 2026</span>
                 </q-btn>
               </div>
 
@@ -27,9 +27,9 @@
                 <q-btn flat dense class="full-width q-pa-sm text-left text-green-8" style="cursor: default">
                   <q-icon name="fa-brands fa-whatsapp" size="md" class="q-mr-sm" />
                   <div class="text-subtitle2 text-weight-medium">
-                    Cel: 7247581<br>
-                    Cel: 61823204<br>
-                    Cel: 60401730
+                    Dra. Pamela Lopez · 72475801<br>
+                    Dra. Nineth Apaza · 60401730<br>
+                    Dra. Jheny Copa · 72557751
                   </div>
                 </q-btn>
               </div>

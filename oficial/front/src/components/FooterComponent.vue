@@ -9,7 +9,7 @@
             <div class="row items-center no-wrap">
               <q-icon left name="fa-brands fa-facebook" />
               <div class="text-left text-grey text-subtitle2 text-bold" style="line-height: 1.2;">
-                Facebook<br>5ta. Jornada Nacional de Neurología
+                Facebook<br>NeuroOruro 2026
               </div>
             </div>
           </q-btn>
@@ -22,27 +22,27 @@
           />
         </div>
 
-        <!-- Jornada Principal -->
+        <!-- Simposio Principal -->
         <div class="col-6 col-md-3">
           <div class="text-grey text-bold text-center">
-            5ta Jornada Nacional de Neurología
+            1er Simposio Internacional de Enfermedad Cerebrovascular en la Altura
           </div>
           <q-separator />
           <div class="text-grey text-center">
-            “Avances en diagnóstico y tratamiento de enfermedades neurológicas”
+            "Oruro Contra el Ictus: Actualización, Código Ictus y Prevención primaria"
           </div>
-          <div class="text-grey text-center">12, 13 y 14 de Junio 2025</div>
-          <div class="text-grey text-center text-caption">Auditorio Clínica San Agustín</div>
+          <div class="text-grey text-center">23, 24 y 25 de Julio 2026</div>
+          <div class="text-grey text-center text-caption">Colegio Médico de Oruro — Villarroel y Vasquez</div>
         </div>
 
-        <!-- Curso Taller -->
+        <!-- Seminario-Taller -->
         <div class="col-6 col-md-3">
           <div class="text-grey text-bold text-center">
-            1er Curso Taller de Exploración Neurológica
+            1er Seminario-Taller Código Ictus y Manejo Hospitalario
           </div>
           <q-separator />
-          <div class="text-grey text-center">13 de Junio</div>
-          <div class="text-grey text-center text-caption">Coordinador: Dr. Jaime López</div>
+          <div class="text-grey text-center">24 de Julio 2026</div>
+          <div class="text-grey text-center text-caption">Auditorio Hospital Gral. San Juan de Dios</div>
         </div>
       </div>
     </div>
